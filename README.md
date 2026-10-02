@@ -30,7 +30,7 @@ In an app that uses Symfony Flex (the default), that's all: Flex adds the bundle
 // config/bundles.php
 return [
     // ...
-    OpenPii\PiiSanitizerBundle\PiiSanitizerBundle::class => ['all' => true],
+    Jackal\PiiSanitizer\Bundle\PiiSanitizerBundle::class => ['all' => true],
 ];
 ```
 
@@ -87,6 +87,27 @@ The version bump is set with a label on the PR:
 | `minor` | `v0.1.0` → `v0.2.0` |
 | `major` | `v0.1.0` → `v1.0.0` |
 | `skip-release` | no new version, e.g. for docs or CI changes |
+
+## Upgrading from 0.1
+
+In 0.2 the namespaces changed: the bundle's from `OpenPii\PiiSanitizerBundle\` to `Jackal\PiiSanitizer\Bundle\`, and `pii-sanitizer-php`'s from `OpenPii\MonologSanitizer\` to `Jackal\PiiSanitizer\`. The configuration (`pii_sanitizer:`) and the behaviour are unchanged.
+
+1. **Update `config/bundles.php` by hand.** Flex does not rename the entry on `composer update`, and the app fails with `Class "OpenPii\PiiSanitizerBundle\PiiSanitizerBundle" not found` until you do. Edit the file before or right after updating:
+
+   ```php
+   // before
+   OpenPii\PiiSanitizerBundle\PiiSanitizerBundle::class => ['all' => true],
+   // after
+   Jackal\PiiSanitizer\Bundle\PiiSanitizerBundle::class => ['all' => true],
+   ```
+
+2. Require the new version:
+
+   ```bash
+   composer require lucajackal85/pii-sanitizer-symfony:^0.2
+   ```
+
+3. If your own code uses the client or processor classes directly, replace `OpenPii\MonologSanitizer\` with `Jackal\PiiSanitizer\` in its `use` statements.
 
 ## License
 

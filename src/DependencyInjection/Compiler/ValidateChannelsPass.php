@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace OpenPii\PiiSanitizerBundle\DependencyInjection\Compiler;
+namespace Jackal\PiiSanitizer\Bundle\DependencyInjection\Compiler;
 
-use OpenPii\MonologSanitizer\Processor\PiiSanitizerProcessor;
+use Jackal\PiiSanitizer\Processor\PiiSanitizerProcessor;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;

@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace OpenPii\PiiSanitizerBundle\Tests;
+namespace Jackal\PiiSanitizer\Bundle\Tests;
 
-use OpenPii\MonologSanitizer\Client\PiiSocketClient;
-use OpenPii\MonologSanitizer\Processor\PiiSanitizerProcessor;
-use OpenPii\PiiSanitizerBundle\PiiSanitizerBundle;
+use Jackal\PiiSanitizer\Bundle\PiiSanitizerBundle;
+use Jackal\PiiSanitizer\Client\PiiSocketClient;
+use Jackal\PiiSanitizer\Processor\PiiSanitizerProcessor;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
