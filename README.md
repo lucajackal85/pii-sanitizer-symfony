@@ -11,27 +11,18 @@ After:   app.ERROR: Payment failed for [PRIVATE_PERSON] {"email":"[PRIVATE_EMAIL
 
 ## Requirements
 
-- PHP ≥ 8.1, Symfony 6.4 or 7.x, and MonologBundle 3.10 or later
-- A running PII Sanitizer Engine container whose socket your PHP-FPM user can read and write. See the [engine quick start](https://github.com/lucajackal85/pii-sanitizer-engine#quick-start) and the [compose example](https://github.com/lucajackal85/pii-sanitizer-php/blob/main/examples/docker-compose.yml).
+- PHP ≥ 8.1
+- Symfony 6.4, 7.x or 8.x (Symfony 8 itself requires PHP 8.4)
+- MonologBundle 3.10 or later, or 4.x
+- A running PII Sanitizer Engine container whose socket your PHP-FPM user can read and write. See the [engine README](https://github.com/lucajackal85/pii-sanitizer-engine#readme) and the [compose example](https://github.com/lucajackal85/pii-sanitizer-php/blob/main/examples/docker-compose.yml).
 
 ## Install
 
-The packages are not on Packagist yet, so add both repositories to your app's `composer.json`:
-
-```json
-"repositories": [
-    { "type": "vcs", "url": "https://github.com/lucajackal85/pii-sanitizer-symfony" },
-    { "type": "vcs", "url": "https://github.com/lucajackal85/pii-sanitizer-php" }
-]
-```
-
-Then require both. Composer only installs a development branch of a dependency when your app requires it explicitly:
-
 ```bash
-composer require lucajackal85/pii-sanitizer-symfony:dev-main lucajackal85/pii-sanitizer-php:dev-main
+composer require lucajackal85/pii-sanitizer-symfony
 ```
 
-While `pii-sanitizer-symfony` is private, Composer needs a GitHub token that can read it (`composer config --global github-oauth.github.com <token>`). `pii-sanitizer-php` is public.
+This also installs [`lucajackal85/pii-sanitizer-php`](https://github.com/lucajackal85/pii-sanitizer-php), the socket client and Monolog processor the bundle wires up.
 
 Register the bundle. There is no Flex recipe yet:
 
@@ -81,3 +72,7 @@ composer rector-fix   # apply rector
 ```
 
 The tests compile a container with the real MonologBundle and check that the processor ends up on the right channel loggers.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

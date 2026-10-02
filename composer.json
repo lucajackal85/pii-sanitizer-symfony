@@ -3,6 +3,17 @@
     "description": "Symfony bundle that scrubs PII and secrets from Monolog records via the local PII Sanitizer Engine.",
     "homepage": "https://github.com/lucajackal85/pii-sanitizer-symfony",
     "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luca Giacalone",
+            "homepage": "https://github.com/lucajackal85"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/lucajackal85/pii-sanitizer-symfony/issues",
+        "source": "https://github.com/lucajackal85/pii-sanitizer-symfony"
+    },
     "keywords": [
         "symfony",
         "bundle",
@@ -14,11 +25,11 @@
     ],
     "require": {
         "php": ">=8.1",
-        "lucajackal85/pii-sanitizer-php": "dev-main",
-        "symfony/config": "^6.4 || ^7.0",
-        "symfony/dependency-injection": "^6.4 || ^7.0",
-        "symfony/http-kernel": "^6.4 || ^7.0",
-        "symfony/monolog-bundle": "^3.10"
+        "lucajackal85/pii-sanitizer-php": "^0.1",
+        "symfony/config": "^6.4 || ^7.0 || ^8.0",
+        "symfony/dependency-injection": "^6.4 || ^7.0 || ^8.0",
+        "symfony/http-kernel": "^6.4 || ^7.0 || ^8.0",
+        "symfony/monolog-bundle": "^3.10 || ^4.0"
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^3.95",
@@ -26,12 +37,6 @@
         "phpunit/phpunit": "^10.5 || ^11.0",
         "rector/rector": "^2.6"
     },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/lucajackal85/pii-sanitizer-php"
-        }
-    ],
     "autoload": {
         "psr-4": {
             "OpenPii\\PiiSanitizerBundle\\": "src/"
