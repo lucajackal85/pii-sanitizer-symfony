@@ -75,6 +75,19 @@ composer rector-fix   # apply rector
 
 The tests compile a container with the real MonologBundle and check that the processor ends up on the right channel loggers.
 
+## Releases
+
+Every pull request merged into `main` is tagged automatically with the next version, and a GitHub Release with the list of merged PRs is published. Packagist picks up new tags on its own.
+
+The version bump is set with a label on the PR:
+
+| Label | Example |
+|---|---|
+| *(none)* | `v0.1.0` → `v0.1.1` |
+| `minor` | `v0.1.0` → `v0.2.0` |
+| `major` | `v0.1.0` → `v1.0.0` |
+| `skip-release` | no new version, e.g. for docs or CI changes |
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
