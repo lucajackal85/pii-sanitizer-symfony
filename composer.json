@@ -1,0 +1,68 @@
+{
+    "name": "lucajackal85/pii-sanitizer-symfony",
+    "description": "Symfony bundle that scrubs PII and secrets from Monolog records via the local PII Sanitizer Engine.",
+    "homepage": "https://github.com/lucajackal85/pii-sanitizer-symfony",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luca Giacalone",
+            "homepage": "https://github.com/lucajackal85"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/lucajackal85/pii-sanitizer-symfony/issues",
+        "source": "https://github.com/lucajackal85/pii-sanitizer-symfony"
+    },
+    "keywords": [
+        "symfony",
+        "bundle",
+        "monolog",
+        "pii",
+        "gdpr",
+        "logging",
+        "redaction"
+    ],
+    "require": {
+        "php": ">=8.1",
+        "lucajackal85/pii-sanitizer-php": "^0.1",
+        "symfony/config": "^6.4 || ^7.0 || ^8.0",
+        "symfony/dependency-injection": "^6.4 || ^7.0 || ^8.0",
+        "symfony/http-kernel": "^6.4 || ^7.0 || ^8.0",
+        "symfony/monolog-bundle": "^3.10 || ^4.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.95",
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^10.5 || ^11.0",
+        "rector/rector": "^2.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "OpenPii\\PiiSanitizerBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OpenPii\\PiiSanitizerBundle\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "stan": "phpstan analyse",
+        "cs": "php-cs-fixer fix --dry-run --diff",
+        "cs-fix": "php-cs-fixer fix",
+        "rector": "rector process --dry-run",
+        "rector-fix": "rector process",
+        "check": [
+            "@cs",
+            "@rector",
+            "@stan",
+            "@test"
+        ]
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}
