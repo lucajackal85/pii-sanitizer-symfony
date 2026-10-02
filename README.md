@@ -31,7 +31,7 @@ Then require both. Composer only installs a development branch of a dependency w
 composer require lucajackal85/pii-sanitizer-symfony:dev-main lucajackal85/pii-sanitizer-php:dev-main
 ```
 
-While the repositories are private, Composer needs a GitHub token that can read them (`composer config --global github-oauth.github.com <token>`).
+While `pii-sanitizer-symfony` is private, Composer needs a GitHub token that can read it (`composer config --global github-oauth.github.com <token>`). `pii-sanitizer-php` is public.
 
 Register the bundle. There is no Flex recipe yet:
 

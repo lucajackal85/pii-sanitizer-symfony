@@ -19,10 +19,6 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
       - uses: ramsey/composer-install@v3
-        env:
-          # lucajackal85/pii-sanitizer-php is a private repository, which the default GITHUB_TOKEN can't read.
-          # Add a repository secret COMPOSER_GITHUB_TOKEN: a fine-grained token with read access to its contents.
-          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"}}'
       - run: vendor/bin/phpunit
       - run: vendor/bin/phpstan analyse --no-progress
 
@@ -37,8 +33,6 @@ jobs:
           php-version: "8.1"
           coverage: none
       - uses: ramsey/composer-install@v3
-        env:
-          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"}}'
       - run: vendor/bin/php-cs-fixer fix --dry-run --diff
 
   rector:
@@ -50,6 +44,4 @@ jobs:
           php-version: "8.1"
           coverage: none
       - uses: ramsey/composer-install@v3
-        env:
-          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"}}'
       - run: vendor/bin/rector process --dry-run
