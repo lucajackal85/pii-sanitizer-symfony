@@ -101,10 +101,10 @@ In 0.2 the namespaces changed: the bundle's from `OpenPii\PiiSanitizerBundle\` t
    Jackal\PiiSanitizer\Bundle\PiiSanitizerBundle::class => ['all' => true],
    ```
 
-2. Require the new version:
+2. Require the new version. `-W` also upgrades `pii-sanitizer-php` to 0.2, which the new bundle needs; without it Composer refuses, because the lock file keeps `pii-sanitizer-php` at 0.1:
 
    ```bash
-   composer require lucajackal85/pii-sanitizer-symfony:^0.2
+   composer require -W lucajackal85/pii-sanitizer-symfony:^0.2
    ```
 
 3. If your own code uses the client or processor classes directly, replace `OpenPii\MonologSanitizer\` with `Jackal\PiiSanitizer\` in its `use` statements.
