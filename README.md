@@ -24,7 +24,7 @@ composer require lucajackal85/pii-sanitizer-symfony
 
 This also installs [`lucajackal85/pii-sanitizer-php`](https://github.com/lucajackal85/pii-sanitizer-php), the socket client and Monolog processor the bundle wires up.
 
-Register the bundle. There is no Flex recipe yet:
+In an app that uses Symfony Flex (the default), that's all: Flex adds the bundle to `config/bundles.php` for you. Without Flex, register it yourself:
 
 ```php
 // config/bundles.php
@@ -52,6 +52,8 @@ pii_sanitizer:
 The bundle registers the processor with the `monolog.processor` tag. MonologBundle then adds it to every logger channel, or only to the channels you list. It runs before your handlers, so Sentry, DataDog and files only ever receive the scrubbed record.
 
 To scrub only what leaves the server, list just those channels. Log calls wait for the engine, which on CPU takes about 100–400 ms for a new line.
+
+Every channel you list must exist in Monolog: `app`, the channels declared under `monolog.channels`, or a channel a service logs to (for example `security`, `php`, `request`). An unknown name stops the container from compiling, with an error under `pii_sanitizer.channels` that lists the channels your app has. The bundle also refuses to start without MonologBundle, because records would silently not be sanitized.
 
 ## When the engine is unavailable
 

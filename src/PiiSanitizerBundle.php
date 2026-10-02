@@ -7,8 +7,10 @@ namespace OpenPii\PiiSanitizerBundle;
 use OpenPii\MonologSanitizer\Client\PiiClientInterface;
 use OpenPii\MonologSanitizer\Client\PiiSocketClient;
 use OpenPii\MonologSanitizer\Processor\PiiSanitizerProcessor;
+use OpenPii\PiiSanitizerBundle\DependencyInjection\Compiler\ValidateChannelsPass;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
+use Symfony\Component\DependencyInjection\Compiler\PassConfig;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 use Symfony\Component\DependencyInjection\Reference;
@@ -27,6 +29,14 @@ use Symfony\Component\HttpKernel\Bundle\AbstractBundle;
  */
 final class PiiSanitizerBundle extends AbstractBundle
 {
+    public function build(ContainerBuilder $container): void
+    {
+        parent::build($container);
+
+        // Priority 1: before MonologBundle's own passes (priority 0), which create the channel loggers and attach processors.
+        $container->addCompilerPass(new ValidateChannelsPass(), PassConfig::TYPE_BEFORE_OPTIMIZATION, 1);
+    }
+
     public function configure(DefinitionConfigurator $definition): void
     {
         // One statement per option instead of a fluent chain: Symfony 6.4 types end() loosely, so a
