@@ -75,8 +75,9 @@ After a failure the processor stops calling the engine for `circuit_breaker_seco
 
 ```bash
 composer install
-vendor/bin/phpunit
-vendor/bin/phpstan analyse
+composer check        # php-cs-fixer + rector (dry run), PHPStan and PHPUnit, like CI
+composer cs-fix       # apply php-cs-fixer
+composer rector-fix   # apply rector
 ```
 
 The tests compile a container with the real MonologBundle and check that the processor ends up on the right channel loggers.
