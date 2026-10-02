@@ -1,0 +1,51 @@
+{
+    "name": "lucajackal85/pii-sanitizer-symfony",
+    "description": "Symfony bundle that scrubs PII and secrets from Monolog records via the local PII Sanitizer Engine.",
+    "homepage": "https://github.com/lucajackal85/pii-sanitizer-symfony",
+    "type": "symfony-bundle",
+    "keywords": [
+        "symfony",
+        "bundle",
+        "monolog",
+        "pii",
+        "gdpr",
+        "logging",
+        "redaction"
+    ],
+    "require": {
+        "php": ">=8.1",
+        "lucajackal85/pii-sanitizer-php": "dev-main",
+        "symfony/config": "^6.4 || ^7.0",
+        "symfony/dependency-injection": "^6.4 || ^7.0",
+        "symfony/http-kernel": "^6.4 || ^7.0",
+        "symfony/monolog-bundle": "^3.10"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^2.0",
+        "phpunit/phpunit": "^10.5 || ^11.0"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lucajackal85/pii-sanitizer-php"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "OpenPii\\PiiSanitizerBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "OpenPii\\PiiSanitizerBundle\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "stan": "phpstan analyse"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "stable"
+}

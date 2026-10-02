@@ -1,0 +1,27 @@
+name: php-tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["8.1", "8.2", "8.3", "8.4"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+      - uses: ramsey/composer-install@v3
+        env:
+          # lucajackal85/pii-sanitizer-php is a private repository, which the default GITHUB_TOKEN can't read.
+          # Add a repository secret COMPOSER_GITHUB_TOKEN: a fine-grained token with read access to its contents.
+          COMPOSER_AUTH: '{"github-oauth": {"github.com": "${{ secrets.COMPOSER_GITHUB_TOKEN }}"}}'
+      - run: vendor/bin/phpunit
+      - run: vendor/bin/phpstan analyse --no-progress
