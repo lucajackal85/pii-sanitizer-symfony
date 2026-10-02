@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace OpenPii\PiiSanitizerBundle\Tests;
+namespace Jackal\PiiSanitizer\Bundle\Tests;
 
-use OpenPii\MonologSanitizer\Processor\PiiSanitizerProcessor;
-use OpenPii\PiiSanitizerBundle\PiiSanitizerBundle;
+use Jackal\PiiSanitizer\Bundle\PiiSanitizerBundle;
+use Jackal\PiiSanitizer\Processor\PiiSanitizerProcessor;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 use Symfony\Bundle\MonologBundle\MonologBundle;

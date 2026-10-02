@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace OpenPii\PiiSanitizerBundle;
+namespace Jackal\PiiSanitizer\Bundle;
 
-use OpenPii\MonologSanitizer\Client\PiiClientInterface;
-use OpenPii\MonologSanitizer\Client\PiiSocketClient;
-use OpenPii\MonologSanitizer\Processor\PiiSanitizerProcessor;
-use OpenPii\PiiSanitizerBundle\DependencyInjection\Compiler\ValidateChannelsPass;
+use Jackal\PiiSanitizer\Bundle\DependencyInjection\Compiler\ValidateChannelsPass;
+use Jackal\PiiSanitizer\Client\PiiClientInterface;
+use Jackal\PiiSanitizer\Client\PiiSocketClient;
+use Jackal\PiiSanitizer\Processor\PiiSanitizerProcessor;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Configurator\DefinitionConfigurator;
 use Symfony\Component\DependencyInjection\Compiler\PassConfig;
